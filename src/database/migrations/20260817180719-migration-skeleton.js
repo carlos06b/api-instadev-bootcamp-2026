@@ -2,7 +2,7 @@ const { password } = require('../../configs/db');
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -40,7 +40,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      update_at: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
@@ -48,6 +48,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('users');
   },
 };
