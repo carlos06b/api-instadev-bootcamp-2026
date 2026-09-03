@@ -11,8 +11,11 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonschema": "^1.5.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.3.0",
     "mysql2": "^3.23.3",
-    "sequelize": "^6.37.8"
+    "sequelize": "^6.37.8",
+    "uuid": "^14.0.2"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
