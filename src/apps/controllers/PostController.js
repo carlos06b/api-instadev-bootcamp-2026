@@ -95,6 +95,33 @@ class PostController {
       numberLikes: postUpdate.number_likes,
     });
   }
+
+  async listMyPosts(req, res) {
+    const allPosts = await Posts.findAll({
+      where: {
+        author_id: req.userID,
+      },
+    });
+
+    if (!allPosts) {
+      return res.status(400).json({ message: 'Nenhum post encontrado' });
+    }
+
+    const formattedData = [];
+
+    for (const item of allPosts) {
+      formattedData.push({
+        id: item.id,
+        image: item.image,
+        description: item.description,
+        number_likes: item.number_likes,
+      });
+    }
+
+    return res.status(200).json({
+      data: formattedData,
+    });
+  }
 }
 
 module.exports = new PostController();
