@@ -1,25 +1,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('posts', {
+    await queryInterface.createTable('likes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      image: {
-        type: Sequelize.STRING,
+      user_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
-      description: {
-        type: Sequelize.STRING,
-      },
-      number_likes: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-      },
-      author_id: {
+      post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -32,9 +25,13 @@ module.exports = {
         allowNull: false,
       },
     });
+    await queryInterface.addIndex('likes', ['user_id', 'post_id'], {
+      unique: true,
+      name: 'likes_user_post_unique',
+    });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('posts');
+    await queryInterface.dropTable('likes');
   },
 };
