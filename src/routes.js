@@ -26,7 +26,7 @@ routes.use(AuthenticationMiddleware);
 
 routes.put('/user', UserControler.update);
 routes.delete('/user', UserControler.delete);
-routes.get('/user-profile', UserControler.userProfile);
+routes.get('/user', UserControler.userProfile);
 
 routes.post('/upload', upload.single('image'), FileController.upload);
 
